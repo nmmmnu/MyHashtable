@@ -20,7 +20,7 @@ LINK		= $(MYCC) -o $@ $^ -lstdc++
 
 
 
-TARGETS		= main_map main_set
+TARGETS		= main_map main_set main_constexpr
 
 all: 	$(TARGETS)
 
@@ -42,9 +42,17 @@ main_map.o: main_map.cc
 main_set.o: main_set.cc
 	$(CXX) $<
 
+main_constexpr.o: main_constexpr.cc
+	$(CXX) $<
+
+
+
 main_map: main_map.o
 	$(LINK)
 
 main_set: main_set.o
+	$(LINK)
+
+main_constexpr: main_constexpr.o
 	$(LINK)
 

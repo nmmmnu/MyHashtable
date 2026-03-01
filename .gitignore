@@ -2,6 +2,9 @@
 *.d
 
 x.*
+x
+y
+z
 a.out
 
 main_map

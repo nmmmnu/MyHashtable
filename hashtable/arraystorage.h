@@ -30,16 +30,17 @@ namespace myhashtable{
 			return data_[id];
 		}
 
-		constexpr T &operator[](size_t id){
-			return data_[id];
+		template<typename... Ts>
+		constexpr void emplace(size_t id, Ts &&...ts){
+			data_[id] = { std::forward<Ts>(ts)... };
 		}
 
 		constexpr static void stats(){
 		}
 
 	private:
-		std::array<T, Size>	data_;
-		T			sentinel_;
+		std::array<T, Size>	data_{};
+		T			sentinel_{};
 	};
 
 } // namespace myhashtable

@@ -19,13 +19,18 @@ namespace myhashtable{
 												std::uint64_t
 			> > >;
 
+		template <std::size_t N>
+		constexpr size_type<N> sentinel = std::numeric_limits<size_type<N> >::max();
+
 		template<typename T, size_t Size>
 		using Container = std::vector<T>;
 	}
 
 	template<typename T, size_t Size, template<typename,size_t> typename Container = compact_storage_impl_::Container>
 	struct CompactStorage{
-		CompactStorage(){
+		constexpr CompactStorage(){
+			data_.reserve(Size);
+
 			for(auto &x : link_)
 				x = sentinel__;
 		}
@@ -43,17 +48,18 @@ namespace myhashtable{
 			return data_[ link_[id] ];
 		}
 
-		constexpr T &operator[](size_t id){
+		template<typename... Ts>
+		constexpr void emplace(size_t id, Ts &&...ts){
 			if (operator()(id)){
-				// the cell is empty.
-				// create new one
-				data_.emplace_back();
+				// the cell is empty, create new one...
+				data_.emplace_back(std::forward<Ts>(ts)...);
 
-				// populate link
+				// populate link...
 				link_[id] = static_cast<size_type>(data_.size() - 1);
+			}else{
+				// update in place...
+				data_[ link_[id] ] = { std::forward<Ts>(ts)... };
 			}
-
-			return data_[ link_[id] ];
 		}
 
 		void stats() const{
@@ -63,7 +69,7 @@ namespace myhashtable{
 	private:
 		using size_type = compact_storage_impl_::size_type<Size>;
 
-		constexpr static auto sentinel__ = std::numeric_limits<size_type>::max();
+		constexpr static auto sentinel__ = compact_storage_impl_::sentinel<Size>;
 
 	private:
 		std::array<size_type,Size>	link_;

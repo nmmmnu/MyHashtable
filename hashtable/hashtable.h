@@ -53,10 +53,8 @@ namespace myhashtable{
 			if (type == LocateType::ERROR)
 				return false;
 
-			controller[id] = typename Controller::value_type{ key, std::forward<Ts>(ts)...};
-			// constexpr
-			//controller[id].first  = key;
-			//controller[id].second = { std::forward<Ts>(ts)... };
+			controller.emplace(id, key, std::forward<Ts>(ts)...);
+
 			return true;
 		}
 
@@ -71,7 +69,7 @@ namespace myhashtable{
 			if (type == LocateType::ERROR)
 				return false;
 
-			controller[id] = std::forward<u_value_type>(data);
+			controller.emplace(id, std::forward<u_value_type>(data));
 			return true;
 		}
 

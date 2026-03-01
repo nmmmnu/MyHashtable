@@ -2,6 +2,7 @@
 #define MY_HASHTABLE_MAP_H_
 
 #include "arraystorage.h"
+#include "mypair.h"
 
 #include <functional>
 
@@ -13,7 +14,7 @@ namespace myhashtable{
 	struct Map{
 		using key_type		= K;
 		using mapped_type	= T;
-		using value_type	= std::pair<key_type, mapped_type>;
+		using value_type	= MyPair<key_type, mapped_type>;
 
 	public:
 		constexpr Map() = default;
@@ -47,8 +48,9 @@ namespace myhashtable{
 			return data_[id];
 		}
 
-		constexpr value_type &operator[](size_t id){
-			return data_[id];
+		template<typename... Ts>
+		constexpr void emplace(size_t id, Ts &&...ts){
+			data_.emplace(id, std::forward<Ts>(ts)...);
 		}
 
 	public:
