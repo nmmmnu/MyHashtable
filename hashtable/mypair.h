@@ -10,6 +10,10 @@ namespace myhashtable{
 
 		constexpr MyPair() = default;
 
+		template<typename UT1>
+		constexpr MyPair(UT1 &&first) :
+					first	(std::forward<UT1>(first	)){}
+
 		template<typename UT1, typename UT2>
 		constexpr MyPair(UT1 &&first, UT2 &&second) :
 					first	(std::forward<UT1>(first	)),

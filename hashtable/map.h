@@ -20,7 +20,7 @@ namespace myhashtable{
 		constexpr Map() = default;
 
 		template<typename... Ts>
-		constexpr Map(Ts &&...ts) : data_( value_type{ std::forward<Ts>(ts)..., T{} } ){}
+		constexpr Map(Ts &&...ts) : data_(std::forward<Ts>(ts)...){}
 
 	public:
 		constexpr static size_t size(){
