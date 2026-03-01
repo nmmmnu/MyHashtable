@@ -1,0 +1,8 @@
+*.o
+*.d
+
+x.*
+a.out
+
+main_map
+main_set
