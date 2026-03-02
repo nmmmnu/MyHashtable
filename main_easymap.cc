@@ -19,6 +19,24 @@ int main(){
 	if constexpr(1){
 		myhashtable::EasyMap<std::string_view, std::string_view, 64, MyStorage> ht;
 
+		ht.insert("Niki"	, "Mihaylov"	);
+		ht.insert("Ivan"	, "Petrov"	);
+		ht.insert("Stoyan"	, "Georgiev"	);
+		ht.insert("Peter"	, "Ivanov"	);
+
+		std::cout << *ht.find("Niki"	) << '\n';
+		std::cout << *ht.find("Ivan"	) << '\n';
+		std::cout << *ht.find("Stoyan"	) << '\n';
+		std::cout << *ht.find("Peter"	) << '\n';
+
+		std::cout << eyn(ht, "none"	) << '\n';
+
+		ht.stats();
+	}
+
+	if constexpr(1){
+		myhashtable::EasyMap<std::string_view, std::string_view, 64, MyStorage> ht;
+
 		ht.insert({"Niki"	, "Mihaylov"	});
 		ht.insert({"Ivan"	, "Petrov"	});
 		ht.insert({"Stoyan"	, "Georgiev"	});

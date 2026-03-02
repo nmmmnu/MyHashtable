@@ -20,6 +20,24 @@ int main(){
 	if constexpr(1){
 		myhashtable::Map<std::string_view, std::string_view, 64, MyStorage> ht;
 
+		insert(ht, "Niki"	, "Mihaylov"	);
+		insert(ht, "Ivan"	, "Petrov"	);
+		insert(ht, "Stoyan"	, "Georgiev"	);
+		insert(ht, "Peter"	, "Ivanov"	);
+
+		std::cout << *find(ht, "Niki"	) << '\n';
+		std::cout << *find(ht, "Ivan"	) << '\n';
+		std::cout << *find(ht, "Stoyan"	) << '\n';
+		std::cout << *find(ht, "Peter"	) << '\n';
+
+		std::cout <<    yn(ht, "none"	) << '\n';
+
+		ht.stats();
+	}
+
+	if constexpr(1){
+		myhashtable::Map<std::string_view, std::string_view, 64, MyStorage> ht;
+
 		insert(ht, {"Niki"	, "Mihaylov"	});
 		insert(ht, {"Ivan"	, "Petrov"	});
 		insert(ht, {"Stoyan"	, "Georgiev"	});
