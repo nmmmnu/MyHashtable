@@ -12,12 +12,12 @@ constexpr auto eyn(HT const &ht, T const &key){
 	return ht.exists(key) ? "Y" : "N";
 };
 
-template<typename T, size_t Size>
-using MyStorage = myhashtable::CompactStorage<T,Size>;
+template<typename T, size_t Items, size_t Size>
+using MyStorage = myhashtable::CompactStorage<T, Items, Size>;
 
 int main(){
 	if constexpr(1){
-		myhashtable::EasySet<std::string_view, 64, MyStorage> ht;
+		myhashtable::EasySet<std::string_view, 16, 64, MyStorage> ht;
 
 		ht.insert("Niki"	);
 		ht.insert("Ivan"	);
@@ -35,7 +35,7 @@ int main(){
 	}
 
 	if constexpr(1){
-		myhashtable::EasySet<int, 64, MyStorage> ht;
+		myhashtable::EasySet<int, 16, 64, MyStorage> ht;
 
 		ht.insert(100 );
 		ht.insert(200 );

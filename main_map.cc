@@ -13,12 +13,12 @@ constexpr auto yn(HT const &ht, T const &key){
 	return exists(ht, key) ? "Y" : "N";
 };
 
-template<typename T, size_t Size>
-using MyStorage = myhashtable::CompactStorage<T,Size>;
+template<typename T, size_t Items, size_t Size>
+using MyStorage = myhashtable::CompactStorage<T, Items, Size>;
 
 int main(){
 	if constexpr(1){
-		myhashtable::Map<std::string_view, std::string_view, 64, MyStorage> ht;
+		myhashtable::Map<std::string_view, std::string_view, 16, 64, MyStorage> ht;
 
 		insert(ht, "Niki"	, "Mihaylov"	);
 		insert(ht, "Ivan"	, "Petrov"	);
@@ -38,7 +38,7 @@ int main(){
 	}
 
 	if constexpr(1){
-		myhashtable::Map<std::string_view, std::string_view, 64, MyStorage> ht;
+		myhashtable::Map<std::string_view, std::string_view, 16, 64, MyStorage> ht;
 
 		insert(ht, {"Niki"	, "Mihaylov"	});
 		insert(ht, {"Ivan"	, "Petrov"	});
@@ -58,7 +58,7 @@ int main(){
 	}
 
 	if constexpr(1){
-		myhashtable::Map<std::string_view, int, 64, MyStorage> ht;
+		myhashtable::Map<std::string_view, int, 16, 64, MyStorage> ht;
 
 		insert(ht, "Niki"	, 100 );
 		insert(ht, "Ivan"	, 200 );
@@ -78,7 +78,7 @@ int main(){
 	}
 
 	if constexpr(1){
-		myhashtable::Map<int, std::string_view, 64, MyStorage> ht; // { std::numeric_limits<int>::max() };
+		myhashtable::Map<int, std::string_view, 16, 64, MyStorage> ht; // { std::numeric_limits<int>::max() };
 
 		insert(ht, 100, "Niki"		);
 		insert(ht, 200, "Ivan"		);

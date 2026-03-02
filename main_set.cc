@@ -13,12 +13,12 @@ constexpr auto yn(HT const &ht, T const &key){
 	return exists(ht, key) ? "Y" : "N";
 };
 
-template<typename T, size_t Size>
-using MyStorage = myhashtable::CompactStorage<T,Size>;
+template<typename T, size_t Items, size_t Size>
+using MyStorage = myhashtable::CompactStorage<T, Items, Size>;
 
 int main(){
 	if constexpr(1){
-		myhashtable::Set<std::string_view, 64, MyStorage> ht;
+		myhashtable::Set<std::string_view, 16, 64, MyStorage> ht;
 
 		insert(ht, "Niki"	);
 		insert(ht, "Ivan"	);
@@ -39,7 +39,7 @@ int main(){
 	}
 
 	if constexpr(1){
-		myhashtable::Set<int, 64, MyStorage> ht; // { std::numeric_limits<int>::max() };
+		myhashtable::Set<int, 16, 64, MyStorage> ht; // { std::numeric_limits<int>::max() };
 
 		insert(ht, 100 );
 		insert(ht, 200 );

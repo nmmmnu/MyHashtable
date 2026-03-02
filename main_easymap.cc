@@ -12,12 +12,12 @@ constexpr auto eyn(HT const &ht, T const &key){
 	return ht.exists(key) ? "Y" : "N";
 };
 
-template<typename T, size_t Size>
-using MyStorage = myhashtable::CompactStorage<T,Size>;
+template<typename T, size_t Items, size_t Size>
+using MyStorage = myhashtable::CompactStorage<T, Items, Size>;
 
 int main(){
 	if constexpr(1){
-		myhashtable::EasyMap<std::string_view, std::string_view, 64, MyStorage> ht;
+		myhashtable::EasyMap<std::string_view, std::string_view, 16, 64, MyStorage> ht;
 
 		ht.insert("Niki"	, "Mihaylov"	);
 		ht.insert("Ivan"	, "Petrov"	);
@@ -37,7 +37,7 @@ int main(){
 	}
 
 	if constexpr(1){
-		myhashtable::EasyMap<std::string_view, std::string_view, 64, MyStorage> ht;
+		myhashtable::EasyMap<std::string_view, std::string_view, 16, 64, MyStorage> ht;
 
 		ht.insert({"Niki"	, "Mihaylov"	});
 		ht.insert({"Ivan"	, "Petrov"	});
@@ -57,7 +57,7 @@ int main(){
 	}
 
 	if constexpr(1){
-		myhashtable::EasyMap<std::string_view, int, 64, MyStorage> ht;
+		myhashtable::EasyMap<std::string_view, int, 16, 64, MyStorage> ht;
 
 		ht.insert("Niki"	, 100 );
 		ht.insert("Ivan"	, 200 );
@@ -77,7 +77,7 @@ int main(){
 	}
 
 	if constexpr(1){
-		myhashtable::EasyMap<int, std::string_view, 64, MyStorage> ht;
+		myhashtable::EasyMap<int, std::string_view, 16, 64, MyStorage> ht;
 
 		ht.insert(100, "Niki"		);
 		ht.insert(200, "Ivan"		);

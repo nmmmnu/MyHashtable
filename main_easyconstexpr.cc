@@ -14,7 +14,7 @@ struct DJBHash{
 };
 
 constexpr int set_constexpr(){
-	myhashtable::EasySet<std::string_view, 64, myhashtable::ArrayStorage, DJBHash> ht{};
+	myhashtable::EasySet<std::string_view, 16, 64, myhashtable::ArrayStorage, DJBHash> ht{};
 
 	ht.insert("Niki"	);
 	ht.insert("Ivan"	);
@@ -25,7 +25,7 @@ constexpr int set_constexpr(){
 }
 
 constexpr int map_constexpr(){
-	myhashtable::EasyMap<std::string_view, int, 64, myhashtable::ArrayStorage, DJBHash> ht{};
+	myhashtable::EasyMap<std::string_view, int, 16, 64, myhashtable::ArrayStorage, DJBHash> ht{};
 
 	ht.insert("Niki"	, 100 );
 	ht.insert("Ivan"	, 200 );
