@@ -25,6 +25,9 @@ int main(){
 		insert(ht, "Stoyan"	);
 		insert(ht, "Peter"	);
 
+		// can not compile:
+		// *findMut(ht, "Niki") = 111;
+
 		std::cout << yn(ht, "Niki"		) << '\n';
 		std::cout << yn(ht, "Ivan"		) << '\n';
 		std::cout << yn(ht, "Stoyan"		) << '\n';
@@ -42,6 +45,9 @@ int main(){
 		insert(ht, 200 );
 		insert(ht, 300 );
 		insert(ht, 400 );
+
+		// can not compile:
+		// *findMut(ht, 100) = 111;
 
 		std::cout << yn(ht, 100) << '\n';
 		std::cout << yn(ht, 200) << '\n';

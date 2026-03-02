@@ -34,6 +34,7 @@ namespace myhashtable{
 			return data;
 		}
 
+		// there is no non-const version, because hashtable can be ruined
 		constexpr static mapped_type const &getVal(key_type const &data){
 			return data;
 		}
@@ -50,6 +51,10 @@ namespace myhashtable{
 		template<typename... Ts>
 		constexpr void emplace(size_t id, Ts &&...ts){
 			data_.emplace(id, std::forward<Ts>(ts)...);
+		}
+
+		constexpr static mapped_type &getVal(value_type &data){
+			return data.second;
 		}
 
 	public:

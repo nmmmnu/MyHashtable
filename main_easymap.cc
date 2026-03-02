@@ -24,6 +24,8 @@ int main(){
 		ht.insert("Stoyan"	, "Georgiev"	);
 		ht.insert("Peter"	, "Ivanov"	);
 
+		*ht.find("Niki") = "Milev";
+
 		std::cout << *ht.find("Niki"	) << '\n';
 		std::cout << *ht.find("Ivan"	) << '\n';
 		std::cout << *ht.find("Stoyan"	) << '\n';
@@ -41,6 +43,8 @@ int main(){
 		ht.insert({"Ivan"	, "Petrov"	});
 		ht.insert({"Stoyan"	, "Georgiev"	});
 		ht.insert({"Peter"	, "Ivanov"	});
+
+		*ht.find("Niki") = "Milev";
 
 		std::cout << *ht.find("Niki"	) << '\n';
 		std::cout << *ht.find("Ivan"	) << '\n';
@@ -60,6 +64,8 @@ int main(){
 		ht.insert("Stoyan"	, 300 );
 		ht.insert("Peter"	, 400 );
 
+		*ht.find("Niki") = 111;
+
 		std::cout << *ht.find("Niki"	) << '\n';
 		std::cout << *ht.find("Ivan"	) << '\n';
 		std::cout << *ht.find("Stoyan"	) << '\n';
@@ -75,8 +81,10 @@ int main(){
 
 		ht.insert(100, "Niki"		);
 		ht.insert(200, "Ivan"		);
-		ht.insert(300, "Stoyan"	);
+		ht.insert(300, "Stoyan"		);
 		ht.insert(400, "Peter"		);
+
+		*ht.find(100) = "Milev";
 
 		std::cout << *ht.find(100) << '\n';
 		std::cout << *ht.find(200) << '\n';

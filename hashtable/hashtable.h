@@ -104,6 +104,18 @@ namespace myhashtable{
 	}
 
 	template<typename Controller>
+	constexpr typename Controller::mapped_type *findMut(Controller &controller, typename Controller::key_type const &key){
+		using namespace impl_;
+
+		auto [type, id] = locate_(controller, key);
+
+		if (type != LocateType::FOUND)
+			return nullptr;
+
+		return & controller.getVal(controller[id]);
+	}
+
+	template<typename Controller>
 	constexpr bool exists(Controller const &controller, typename Controller::key_type const &key){
 		using namespace impl_;
 

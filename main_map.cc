@@ -25,6 +25,8 @@ int main(){
 		insert(ht, "Stoyan"	, "Georgiev"	);
 		insert(ht, "Peter"	, "Ivanov"	);
 
+		*findMut(ht, "Niki") = "Milev";
+
 		std::cout << *find(ht, "Niki"	) << '\n';
 		std::cout << *find(ht, "Ivan"	) << '\n';
 		std::cout << *find(ht, "Stoyan"	) << '\n';
@@ -42,6 +44,8 @@ int main(){
 		insert(ht, {"Ivan"	, "Petrov"	});
 		insert(ht, {"Stoyan"	, "Georgiev"	});
 		insert(ht, {"Peter"	, "Ivanov"	});
+
+		*findMut(ht, "Niki") = "Milev";
 
 		std::cout << *find(ht, "Niki"	) << '\n';
 		std::cout << *find(ht, "Ivan"	) << '\n';
@@ -61,6 +65,8 @@ int main(){
 		insert(ht, "Stoyan"	, 300 );
 		insert(ht, "Peter"	, 400 );
 
+		*findMut(ht, "Niki") = 111;
+
 		std::cout << *find(ht, "Niki"	) << '\n';
 		std::cout << *find(ht, "Ivan"	) << '\n';
 		std::cout << *find(ht, "Stoyan"	) << '\n';
@@ -78,6 +84,8 @@ int main(){
 		insert(ht, 200, "Ivan"		);
 		insert(ht, 300, "Stoyan"	);
 		insert(ht, 400, "Peter"		);
+
+		*findMut(ht, 100) = "Milev";
 
 		std::cout << *find(ht, 100) << '\n';
 		std::cout << *find(ht, 200) << '\n';

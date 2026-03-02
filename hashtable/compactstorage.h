@@ -21,15 +21,13 @@ namespace myhashtable{
 
 		template <std::size_t N>
 		constexpr size_type<N> sentinel = std::numeric_limits<size_type<N> >::max();
-
-		template<typename T, size_t Size>
-		using Container = std::vector<T>;
 	}
 
-	template<typename T, size_t Size, template<typename,size_t> typename Container = compact_storage_impl_::Container>
+	template<typename T, size_t Size, template<typename> typename Container = std::vector>
 	struct CompactStorage{
-		constexpr CompactStorage(){
-			data_.reserve(Size);
+		constexpr CompactStorage(size_t reserve = 0){
+			if (reserve)
+				data_.reserve(reserve);
 
 			for(auto &x : link_)
 				x = sentinel__;
@@ -45,6 +43,10 @@ namespace myhashtable{
 		}
 
 		constexpr T const &operator[](size_t id) const{
+			return data_[ link_[id] ];
+		}
+
+		constexpr T &operator[](size_t id){
 			return data_[ link_[id] ];
 		}
 
@@ -73,7 +75,7 @@ namespace myhashtable{
 
 	private:
 		std::array<size_type,Size>	link_;
-		Container<T,Size>		data_;
+		Container<T>			data_;
 	};
 
 } // namespace myhashtable

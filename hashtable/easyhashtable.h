@@ -30,6 +30,10 @@ namespace myhashtable{
 			return myhashtable::find(controller_, key);
 		}
 
+		constexpr typename Controller::mapped_type *find(key_type const &key){
+			return myhashtable::findMut(controller_, key);
+		}
+
 		constexpr bool exists(key_type const &key) const{
 			return myhashtable::exists(controller_, key);
 		}

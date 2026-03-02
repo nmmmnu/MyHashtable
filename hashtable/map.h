@@ -39,12 +39,20 @@ namespace myhashtable{
 			return data.second;
 		}
 
+		constexpr static mapped_type &getVal(value_type &data){
+			return data.second;
+		}
+
 	public:
 		constexpr bool operator()(size_t id) const{
 			return data_(id);
 		}
 
 		constexpr value_type const &operator[](size_t id) const{
+			return data_[id];
+		}
+
+		constexpr value_type &operator[](size_t id){
 			return data_[id];
 		}
 

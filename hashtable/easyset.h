@@ -13,6 +13,9 @@ namespace myhashtable{
 
 		template<typename... Ts>
 		constexpr EasySet(Ts &&...ts) : EasyHashtable<Controller>(std::forward<Ts>(ts)...){}
+
+		// there is no non-const version, because hashtable can be ruined
+		typename Controller::mapped_type *find(typename Controller::key_type const &key) = delete;
 	};
 
 } // namespace myhashtable

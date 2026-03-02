@@ -30,6 +30,10 @@ namespace myhashtable{
 			return data_[id];
 		}
 
+		constexpr T &operator[](size_t id){
+			return data_[id];
+		}
+
 		template<typename... Ts>
 		constexpr void emplace(size_t id, Ts &&...ts){
 			data_[id] = { std::forward<Ts>(ts)... };
