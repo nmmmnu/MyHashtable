@@ -4,11 +4,12 @@ Idea:
 -
 Create hashtable on the stack with compile time decided size, add some items, then query them.
 - C++17, can be easily downgraded to C++14 if you need.
-- Can work fully constexpr - see **main_constexpr** and **main_easyconstexpr**.
+- Can work fully constexpr.
 - Can work as **Map**, **Set**.
-- You can define additional custom Map-like interfaces.  See **hashtable/map.h**. 
-- Have free function API or class API - see **main_XXX** vs **main_easyXXX**.
-- Your custom Map-like interfaces can work with class API as well see **hashtable/easymap.h**. 
+- You can define additional custom Map-like interfaces.  See **hashtable/map.h**.
+- Have free function API.
+- Have class interface.
+- Your custom Map-like interfaces can work with class API as well see **hashtable/easymap.h**.
 
 Operations:
 -
@@ -16,4 +17,14 @@ Operations:
 - **find** element. Returns pointer to the element. If element does not exists, returns **nullptr**
 - **exists** - check element existence.
 - **remove** - NOT SUPPORTED, because the table suppose to be read only for most of the time the program is running.
+
+Examples:
+-
+- **main_constexpr.cc**		- constexpr Map / constexpr Set with free functions
+- **main_easyconstexpr.cc**	- constexpr Map / constexpr Set with class interface
+- **main_map.cc**		- Map with free functions
+- **main_set.cc**		- Set with free functions
+- **main_easymap.cc**		- Map with class interface
+- **main_easyset.cc**		- Set with class interface
+
 
