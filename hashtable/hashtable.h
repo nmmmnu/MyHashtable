@@ -54,7 +54,6 @@ namespace myhashtable{
 				return false;
 
 			controller.emplace(id, key, std::forward<Ts>(ts)...);
-
 			return true;
 		}
 

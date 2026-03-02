@@ -39,8 +39,8 @@ namespace myhashtable{
 		}
 
 	private:
-		std::array<T, Size>	data_{};
-		T			sentinel_{};
+		std::array<T, Size>	data_		{};
+		T			sentinel_	{};
 	};
 
 } // namespace myhashtable
