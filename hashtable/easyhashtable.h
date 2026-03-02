@@ -38,6 +38,10 @@ namespace myhashtable{
 			return controller_.stats();
 		}
 
+		constexpr size_t longestChain() const{
+			return myhashtable::longestChain(controller_);
+		}
+
 	private:
 		Controller controller_;
 	};
